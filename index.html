@@ -16,31 +16,26 @@
     position: relative; /* 改变定位方式 */
     background-color: rgba(65, 81, 101, 0.9); /* 确保下拉菜单背景颜色与导航菜单一致 */
   }
-
-  /* 当导航菜单展开时，下拉菜单覆盖导航菜单的文字 */
-  .nav-menu.open + .dropdown .dropdown-menu {
-    position: absolute;
+  .nav-menu.open + .dropdown-menu {
     top: 80px; /* 与导航菜单底部对齐 */
     left: 0;
     right: 0;
   }
 }
- .dropdown {
+.dropdown {
   position: relative;
 }
-
 .dropdown-menu {
   display: none;
   position: absolute;
-  background-color:rgba(65, 81, 101, 0.9);
+  background-color: rgba(65, 81, 101, 0.9);
   border-radius: 5px; /* 圆角效果 */
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 160px; /* 最小宽度 */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   overflow: hidden; /* 确保阴影不超出边界 */
-  animation: fadeIn 0.3s ease-in; /* 淡入动画 */
+  animation: fadeIn 0.3s ease-in-out; /* 淡入动画 */
 }
-
 /* 为下拉菜单项添加样式 */
 .dropdown-menu li {
   color: #333;
@@ -50,43 +45,43 @@
   text-align: left;
   transition: background-color 0.3s; /* 过渡效果 */
 }
-
 /* 鼠标悬停时的背景色变化 */
 .dropdown-menu li:hover {
   background-color: rgba(255, 136, 0, 0.7);
 }
-
 /* 淡入动画 */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 /* 鼠标悬停时显示下拉菜单 */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
-
 /* 为下拉菜单添加悬停效果 */
 .dropdown-menu li:hover {
   background-color: #ee9ca7;
 }
-      .logo {
-  color: rgba(227, 131, 21, 0.7);
-  font-weight: 100;
-  text-decoration: none;
-  font-size: 1em;
-  letter-spacing: 2px; /* 字符间距 */
+/* 鼠标悬停时显示下拉菜单 */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
-        /* 设置欢迎文本的样式 */
+      /* 设置欢迎文本的样式 */
  .welcome-text {
-  font-size: 4em; /* 加大字号 */
-  color: #ff6347; /* 改变字体颜色 */
+  font-size: 2em; /* 加大字号 */
+  color: #ffffff; /* 改变字体颜色 */
   text-shadow: 2px 2px 4px #000000; /* 文字阴影，增加可读性 */
   position: absolute; /* 使文本浮于背景之上 */
   z-index: 1; /* 确保文本在最上层 */
    left: 20%;
    top:50%
+}
+.loge {
+  color: rgba(255, 136, 0, 0.7);
+  font-weight: 100;
+  text-decoration: none;
+  font-size: 20px; /* 修改字体大小为24px */
+  letter-spacing: 2px; /* 字符间距 */
 }
     </style>
   </head>
@@ -94,10 +89,10 @@
     <nav>
       <div  style="font-size: 2em; /* 加大字号 */color: rgba(227, 131, 21, 0.7);">StellarScribe</div>
 <ul class="nav-menu">
-  <li><a href="樱花雨/index.html" class="logo">开始</a></li>
-  <li><a href="相册/3D相册.html" class="logo">相册</a></li>
+  <li><a href="樱花雨/index.html" class="loge">开始</a></li>
+  <li><a href="相册/3D相册.html" class="loge">相册</a></li>
   <li class="dropdown">
-    <a href="#" class="logo">生日祝福</a>
+    <a href="#" class="loge">生日祝福</a>
     <ul class="dropdown-menu">
       <li><a href="信封/valentine/贺卡袋.html" class="logo">信封</a></li>
       <li><a href="生日贺卡/brithdaycard.html" class="logo">生日贺卡</a></li>
@@ -106,7 +101,7 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a href="#" class="logo">回忆</a>
+    <a href="#" class="loge">回忆</a>
     <ul class="dropdown-menu">
       <li><a href="3D盒子/index.html" class="logo">盒子</a></li>
       <li><a href="3D照片旋转/index.html" class="logo">木马</a></li>
@@ -130,60 +125,60 @@
     <script src="15-responsive-navbar/index.js" type="text/javascript"></script>
   </body>
 <script>
-// 获取所有的下拉按钮
-var dropdowns = document.getElementsByClassName("dropdown");
-var navItems = document.querySelectorAll(".dropdown + ul li"); // 假设导航项紧跟在下拉按钮后面
+// 确保在DOM加载完成后执行JavaScript代码
+document.addEventListener('DOMContentLoaded', () => {
+  // 获取所有的下拉按钮
+  const dropdowns = document.querySelectorAll(".dropdown");
 
-// 遍历下拉按钮
-for (var i = 0; i < dropdowns.length; i++) {
-  dropdowns[i].addEventListener("click", function(event) {
-    event.stopPropagation();
-    this.classList.toggle("active");
-    var dropdownContent = this.querySelector(".dropdown-menu");
-    dropdownContent.style.display = this.classList.contains("active") ? "block" : "none";
-
-    // 隐藏当前项和后面的项的文字
-    if (dropdownContent.style.display === "block") {
-      for (var j = 0; j < navItems.length; j++) {
-        navItems[j].style.visibility = "hidden";
+  // 遍历下拉按钮
+  for (let i = 0; i < dropdowns.length; i++) {
+    dropdowns[i].addEventListener("click", function(event) {
+      event.stopPropagation(); // 阻止事件传播
+      this.classList.toggle("active"); // 切换活动状态
+      const dropdownContent = this.querySelector(".dropdown-menu");
+      dropdownContent.style.display = this.classList.contains("active") ? "block" : "none"; // 根据活动状态切换显示或隐藏下拉菜单
+      // 隐藏当前项和后面项的文字
+      if (dropdownContent.style.display === "block") {
+        // 获取当前下拉按钮的索引
+        const currentIndex = Array.prototype.indexOf.call(dropdowns, this);
+        // 隐藏当前项和后面项的文字
+        for (let j = currentIndex; j < dropdowns.length; j++) {
+          const dropdownLabel = dropdowns[j].querySelector(".dropdown-label");
+          if (dropdownLabel) {
+            dropdownLabel.style.visibility = "hidden"; // 隐藏文字
+          }
+        }
+      } else {
+        // 恢复显示所有项的文字
+        for (let j = 0; j < dropdowns.length; j++) {
+          const dropdownLabel = dropdowns[j].querySelector(".dropdown-label");
+          if (dropdownLabel) {
+            dropdownLabel.style.visibility = "visible"; // 显示文字
+          }
+        }
       }
-    } else {
-      // 恢复显示所有项的文字
-      for (var j = 0; j < navItems.length; j++) {
-        navItems[j].style.visibility = "visible";
-      }
-    }
+    });
+  }
 
-    // 当下拉菜单显示时，阻止其他下拉菜单显示
-    for (var j = 0; j < dropdowns.length; j++) {
-      if (dropdowns[j] !== this) {
-        dropdowns[j].classList.remove("active");
-        var otherDropdownContent = dropdowns[j].querySelector(".dropdown-menu");
-        otherDropdownContent.style.display = "none";
-        // 恢复其他下拉菜单项的文字
-        for (var k = 0; k < navItems.length; k++) {
-          navItems[k].style.visibility = "visible";
+  // 点击其他地方时关闭下拉菜单并恢复文字显示
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) { // 检查点击的是否是下拉按钮或其内部元素
+      for (let i = 0; i < dropdowns.length; i++) {
+        if (dropdowns[i].classList.contains("active")) {
+          dropdowns[i].classList.remove("active"); // 移除活动状态
+          const dropdownContent = dropdowns[i].querySelector(".dropdown-menu");
+          dropdownContent.style.display = "none"; // 隐藏下拉菜单
+          // 恢复显示所有项的文字
+          for (let j = 0; j < dropdowns.length; j++) {
+            const dropdownLabel = dropdowns[j].querySelector(".dropdown-label");
+            if (dropdownLabel) {
+              dropdownLabel.style.visibility = "visible"; // 显示文字
+            }
+          }
         }
       }
     }
   });
-}
-
-// 点击其他地方时关闭下拉菜单并恢复文字显示
-document.addEventListener('click', function(event) {
-  if (!event.target.matches('.dropdown *')) { // 检查点击的是否是下拉按钮内部的元素
-    for (var i = 0; i < dropdowns.length; i++) {
-      if (dropdowns[i].classList.contains("active")) {
-        dropdowns[i].classList.remove("active");
-        var dropdownContent = dropdowns[i].querySelector(".dropdown-menu");
-        dropdownContent.style.display = "none";
-        // 恢复显示所有项的文字
-        for (var j = 0; j < navItems.length; j++) {
-          navItems[j].style.visibility = "visible";
-        }
-      }
-    }
-  }
 });
 </script>
 </html>
