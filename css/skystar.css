@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+  /* 添加 CSS 样式来控制海报图片的显示 */
+        .horizontal-poster {
+            object-fit: cover; /* 保持图片的宽高比，覆盖整个视频区域 */
+            width: 100%; /* 设置图片宽度为视频的宽度 */
+            height: auto; /* 设置图片高度自动，以保持宽高比 */
+        }
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    perspective: 1300px;
+}
+#videofilm {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    object-fit: cover; /* 或者可以使用 'contain' 来确保视频完全包含在容器内 */
+  }
+/*#videofilm {*/
+/*  position: fixed; !* 固定位置，覆盖整个视口 *!*/
+/*  top: 0%;*/
+/*    bottom: 0%;*/
+/*  left: 50%;*/
+/*  min-width: 100%; !* 至少视口宽度 *!*/
+/*  min-height: 100%; !* 至少视口高度 *!*/
+/*  width: auto; !* 高度自适应 *!*/
+/*  height: auto; !* 宽度自适应 *!*/
+/*  transform: translate(-50%, -50%); !* 居中显示 *!*/
+/*  z-index: -1; !* 确保视频在内容下方 *!*/
+/*    object-fit: cover; !* 或者可以使用 'contain' 来确保视频完全包含在容器内 *!*/
+/*}*/
+
+  h1{
+    font-size: 40px;
+    color: #e7e7e7;
+    font-family: '楷体';
+  }
+.texttwo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+}
+.textone {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+}
+.textthree {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+}
+:root {
+    --margin-top: 0;
+    --margin-left: 0;
+    --animation-duration: 0s;
+    --animation-delay: 0s;
+}
+div {
+    transform-style: preserve-3d;
+}
+.word-box,
+.word-box .word{
+position: absolute;
+animation: rotY 0s linear infinite;
+animation-duration: var(--animation-duration);
+animation-delay: var(--animation-delay);
+}
+.word-box{
+    margin-top: var(--margin-top);
+}
+.word-box .word{
+    margin-left: var(--margin-left);
+}
+.word-box .word {
+    animation-duration: reverse;
+}
+@keyframes rotY {
+    to{
+        transform: rotateY(360deg);
+    }
+    
+}
