@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" />
+    <title>Birthday Card</title>
+
+    <!-- Google Font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+<style>        .top-left {
+            position: fixed; /* 使用fixed定位，相对于浏览器窗口定位 */
+            top: 0; /* 距离顶部0像素 */
+            left: 0; /* 距离左边0像素 */
+            font-family: 'KaiTi', '楷体', sans-serif; /* 设置字体 */
+            font-size: 20px; /* 设置字体大小 */
+            color: #000000; /* 设置字体颜色 */
+            z-index: 1000; /* 确保文本在页面最上层 */
+        }</style>
+          <style>
+            /* 按钮通用样式 */
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        /* 按钮悬停样式 */
+        .button:hover {
+            background-color: #ddd;
+        }
+
+        /* 左上角按钮样式 */
+        #button-top-left {
+       position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+        }
+
+        /* 右下角按钮样式 */
+        #button-bottom-right {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+
+
+
+    <div class="card" id="dd">
+
+ <audio id="myAudio" src="../video/video/有点甜.mp3" autoplay loop></audio>
+
+      <div class="outside">
+
+        <div class="front">
+          <p>Happy Birthday</p>
+          <div class="cake">
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+            <div class="candle"></div>
+          </div>
+        </div>
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+       <p style='text-indent: 2em;'>在你的生日这一天，我想让你知道，你是最亮的星星。愿你的每一天都像今天一样，充满爱、温暖和甜蜜</p>
+        <h1>🧡</h1> <!-- 使用实际的表情符号代替字符实体 -->
+      </div>
+    </div>
+   <script>
+       // 获取按钮元素
+    var topLeftButton = document.getElementById('button-top-left');
+    var bottomRightButton = document.getElementById('button-bottom-right');
+
+    // 为左上角按钮绑定点击事件
+    topLeftButton.addEventListener('click', function() {
+     window.location.replace("bilibili-video-code/valentine/贺卡袋.html");
+        // 可以在这里添加更多的逻辑
+    });
+
+    // 为右下角按钮绑定点击事件
+    bottomRightButton.addEventListener('click', function() {
+      // window.location.replace("祝福/html/index1.html");
+         window.location.replace("HTML-CSS-case/3D旋转木马/index.html");
+        // 可以在这里添加更多的逻辑
+    });
+window.addEventListener('load', function() {
+  var audio = document.getElementById('myAudio');
+  console.log(audio)
+  var storedTime = localStorage.getItem('audioTime');
+  if (storedTime) {
+    audio.currentTime = storedTime;
+    audio.play();
+  }
+  audio.onended = function() {
+    localStorage.removeItem('audioTime');
+  };
+  audio.ontimeupdate = function() {
+    localStorage.setItem('audioTime', audio.currentTime);
+  };
+});
+
+
+
+  </script>
+  </body>
+</html>
