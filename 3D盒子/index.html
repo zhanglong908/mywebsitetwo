@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport"  />
+		<title>HTML+CSS 3D盒子</title>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body id="boxbox">
+	<section>
+			<div><img src="images/1%20(32).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(33).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(34).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(35).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(36).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(37).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(38).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(39).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(40).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(42).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(41).jpeg.png" alt="" /></div>
+			<div><img src="images/1%20(43).jpeg.png" alt="" /></div>
+		</section>
+
+		<audio id='myAudio' src="../../video/video/有点甜.mp3" autoplay="autoplay" loop="loop">
+
+	<script>
+		window.addEventListener('load', function() {
+  var audio = document.getElementById('myAudio');
+  console.log(audio)
+  var storedTime = localStorage.getItem('audioTime');
+  if (storedTime) {
+    audio.currentTime = storedTime;
+    audio.play();
+  }
+  audio.onended = function() {
+    localStorage.removeItem('audioTime');
+  };
+  audio.ontimeupdate = function() {
+    localStorage.setItem('audioTime', audio.currentTime);
+  };
+});
+
+		  window.addEventListener('load', function() {
+  var audio = document.getElementById('myAudio');
+  console.log(audio)
+  var storedTime = localStorage.getItem('audioTime');
+  if (storedTime) {
+    audio.currentTime = storedTime;
+    audio.play();
+  }
+  audio.onended = function() {
+    localStorage.removeItem('audioTime');
+  };
+  audio.ontimeupdate = function() {
+    localStorage.setItem('audioTime', audio.currentTime);
+  };
+});
+
+	</script>
+	</body>
+</html>

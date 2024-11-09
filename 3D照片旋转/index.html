@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport"/>
+		<title>HTML+CSS 3D旋转木马效果</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<style>
+
+    </style>
+	</head>
+	<body>
+
+<div id="boxbox">
+		<section>
+			<div><img src="images/1.jpeg" alt="" /></div>
+			<div><img src="images/2.jpeg" alt="" /></div>
+			<div><img src="images/3.jpeg" alt="" /></div>
+			<div><img src="images/4.jpeg" alt="" /></div>
+			<div><img src="images/5.jpeg" alt="" /></div>
+			<div><img src="images/6.jpeg" alt="" /></div>
+		</section>
+</div>
+<audio id='myAudio' src="../video/video/有点甜.mp3" autoplay="autoplay" loop="loop"></audio>
+	<script>
+
+				  window.addEventListener('load', function() {
+  var audio = document.getElementById('myAudio');
+  console.log(audio)
+  var storedTime = localStorage.getItem('audioTime');
+  if (storedTime) {
+    audio.currentTime = storedTime;
+    audio.play();
+  }
+  audio.onended = function() {
+    localStorage.removeItem('audioTime');
+  };
+  audio.ontimeupdate = function() {
+    localStorage.setItem('audioTime', audio.currentTime);
+  };
+});
+
+	</script>
+	</body>
+</html>
